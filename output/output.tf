@@ -1,5 +1,5 @@
 output "sample" {
-  value = Hello United States
+  value = "Hello United States"
 }
 
 
