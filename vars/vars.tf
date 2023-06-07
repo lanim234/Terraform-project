@@ -15,6 +15,6 @@ output "Year" {
   value = var.Year
 }
 
-output "sample-ext" {
+output "My Team" {
   value = "Value of Team - ${var.Team}"
 }
