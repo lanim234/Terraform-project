@@ -18,3 +18,7 @@ output "Year" {
 output "My_Team" {
   value = "Value of Team - ${var.Team}"
 }
+variable "url" {}
+output "url" {
+  value = var.url
+}
