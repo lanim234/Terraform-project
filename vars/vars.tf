@@ -15,6 +15,6 @@ output "Year" {
   value = var.Year
 }
 
-output "My Team" {
+output "My_Team" {
   value = "Value of Team - ${var.Team}"
 }
