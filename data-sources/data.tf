@@ -19,3 +19,12 @@ data "aws_security_group" "selected" {
 output "sgid" {
   value = data.aws_security_group.selected.id
 }
+
+data "aws_ami" "example" {
+  executable_users = ["amazon"]
+  most_recent      = true
+  name_regex       = "Centos-8-DevOps-practice"
+}
+ output "ami" {
+   value = data.aws_ami.example.id
+ }
