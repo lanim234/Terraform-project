@@ -35,6 +35,6 @@ output "aws_topics" {
   value = lookup(var.classes, "aws", null)
 }
 
-output "fruits_3" {
-  value = element(var.fruits,4)
+output "fruits_8" {
+  value = element(var.fruits,8)
 }
