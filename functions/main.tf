@@ -36,5 +36,5 @@ output "aws_topics" {
 }
 
 output "fruits_3" {
-  value = var.fruits[2]
+  value = var.fruits[3]
 }
