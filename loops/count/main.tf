@@ -4,7 +4,7 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"
 
   tags = {
-    Name = "Hello"
+    Name = element(var.instances, count.index)
   }
 }
 
@@ -20,6 +20,7 @@ variable "instances" {
 
     frontend = {
       name          = "frontend"
+      instance_type = "t3.micro"
     }
     catalogue = {
       name          = "catalogue"
