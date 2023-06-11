@@ -1,10 +1,41 @@
 resource "aws_instance" "web" {
-  ami           = data.aws_ami.example.id
+  ami           = ami-03265a0778a880afb
   instance_type = "t3.micro"
   vpc_security_group_ids = [aws_security_group.sg.id]
+
+
   tags = {
     Name = var.name
   }
+
+
+  provisioner "remote-exec" {
+
+    connection {
+      type     = "ssh"
+      user     = "centos"
+      password = "DevOps321"
+      host     = self.public_ip
+    }
+
+    inline = [
+      "sudo labauto ansible",
+      "ansible-pull -i localhost, -u https:github.com/raghudevopsb73/roboshop-ansible main.yml -e env=dev -e role_name=frontend ",
+    ]
+  }
+}
+
+resource "aws_route53_record" "www" {
+  zone_id = "Z01135003JT1TK8N0FX0N"
+  name    = "${var.name}-dev"
+  type    = "A"
+  ttl     = 30
+  records = [aws_instance.web.private_ip]
+}
+
+
+
+
 }
 
 data "aws_ami" "example" {
