@@ -8,14 +8,14 @@ resource "aws_instance" "web" {
     Name = var.name
   }
 
-
+resource "null_resource" "ansible" {
   provisioner "remote-exec" {
 
     connection {
       type     = "ssh"
       user     = "centos"
       password = "DevOps321"
-      host     = self.public_ip
+      host     = aws_instance.web.public_ip
     }
 
     inline = [
